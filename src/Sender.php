@@ -12,6 +12,9 @@ use Exception;
 
 class Sender
 {
+    /** Curl timeout. */
+    const CURLOPT_TIMEOUT = 3;
+
     const SERVICE_URL = 'https://api.vertexsms.com/sms';
 
     /** @var string Vertex API token. */
@@ -292,6 +295,7 @@ class Sender
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POST, count($fields));
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
+        curl_setopt($ch, CURLOPT_TIMEOUT, static::CURLOPT_TIMEOUT);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array(
             'X-VertexSMS-Token: ' . $this->getApiToken(),
             'Content-Type: application/json'
