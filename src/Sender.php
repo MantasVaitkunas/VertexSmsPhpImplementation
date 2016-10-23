@@ -283,11 +283,16 @@ class Sender
             'dlrUrl' => $this->getDlrUrl(),
             'priority' => $this->getPriority(),
             'scheduled' => $this->getScheduled(),
-            'udh' => $this->getUdh(),
-            'coding' => $this->getCoding(),
             'testMode' => $this->getTestMode(),
             'expireIn' => $this->getExpireIn(),
         );
+
+        if (!is_null($this->getUdh())) {
+            $fields['udh'] = $this->getUdh();
+        }
+        if (!is_null($this->getCoding())) {
+            $fields['coding'] = $this->getCoding();
+        }
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
