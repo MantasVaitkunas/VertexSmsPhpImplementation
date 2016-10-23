@@ -2,6 +2,12 @@
 
 This is https://vertexsms.com/docs/sms.html PHP implementation.
 
+## Installation via composer
+
+```bash
+composer require mantasvaitkunas/vertex-sms-php-implementation
+```
+
 ## Usage example
 
 ```php
